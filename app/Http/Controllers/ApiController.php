@@ -64,13 +64,20 @@ class ApiController extends Controller
    {
        $stud=Ajax::find($request->id);
        
-       
+       if($stud)
+       {
        $stud->name=$request->get('name');
        $stud->email=$request->get('email');
        $stud->save();
-       return [
+       return response()->json([
            "message"=>"Record Updated Successfully"
-       ];
+       ],200);
+    }
+    else{
+        return response()->json([
+            "message"=>"Record no updated Successfully"
+        ],405);
+    }
     }
        
 }
