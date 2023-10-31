@@ -28,4 +28,50 @@ class ApiController extends Controller
     $students = Ajax::all()->toJson(JSON_PRETTY_PRINT);
     return $students;
    }
+   public function delete_data($id)
+   {
+        if(Ajax::where('id',$id)->exists())
+        {
+            $stud = Ajax::find($id);
+            $stud -> delete();
+            return [
+                "message" => "Record deleted"
+            ];
+        }
+        else
+        {
+            return [
+                "message" =>  "Record not found"
+            ];
+        }
+   }
+   public function fetchdata($id)
+   {
+        if(Ajax::where('id',$id)->exists())
+        {
+            $stud = Ajax::where('id',$id)-> get()-> toJson(JSON_PRETTY_PRINT);
+            return ($stud);
+        }
+        else
+        {
+            return [
+                "message" =>  "Record not found"
+            ]; 
+        }
+       
+   }
+   public function edit_data(Request $request)
+   {
+       $stud=Ajax::find($request->id);
+       
+       
+       $stud->name=$request->get('name');
+       $stud->email=$request->get('email');
+       $stud->save();
+       return [
+           "message"=>"Record Updated Successfully"
+       ];
+    }
+       
 }
+
