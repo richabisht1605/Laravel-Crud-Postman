@@ -10,7 +10,7 @@ use DB;
 
 class ApiController extends Controller
 {
-   public function form_submit(Request $request)
+   public function formsubmit(Request $request)
    {
         $add= new Ajax;
         if($request->isMethod('post'))
@@ -28,7 +28,7 @@ class ApiController extends Controller
     $students = Ajax::all()->toJson(JSON_PRETTY_PRINT);
     return $students;
    }
-   public function delete_data($id)
+   public function deletedata($id)
    {
         if(Ajax::where('id',$id)->exists())
         {
@@ -60,7 +60,7 @@ class ApiController extends Controller
         }
        
    }
-   public function edit_data(Request $request)
+   public function editdata(Request $request)
    {
        $stud=Ajax::find($request->id);
        

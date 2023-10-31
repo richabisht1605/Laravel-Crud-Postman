@@ -17,8 +17,8 @@ use App\Http\Controllers\ApiController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('/form-submit',[ApiController::class,'form_submit']);
+Route::post('/form-submit',[ApiController::class,'formsubmit']);
 Route::get('/display-form-data',[ApiController::class,'display']);
-Route::get('delete-data/{id}',[ApiController::class,'delete_data']);
+Route::get('delete-data/{id}',[ApiController::class,'deletedata']);
 Route::get('fetchdata/{id}',[ApiController::class,'fetchdata']);
-Route::put('edit-data/{id}',[ApiController::class,'edit_data']);
+Route::put('edit-data/{id}',[ApiController::class,'editdata']);
